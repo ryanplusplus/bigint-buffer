@@ -1,4 +1,3 @@
-
 interface ConverterInterface {
   toBigInt(buf: Buffer, bigEndian?: boolean): bigint;
   fromBigInt(num: BigInt, buf: Buffer, bigEndian?: boolean): Buffer;
@@ -23,6 +22,11 @@ if (!process.browser) {
  * @returns A BigInt with the little-endian representation of buf.
  */
 export function toBigIntLE(buf: Buffer): bigint {
+  // Add input validation to prevent buffer overflow
+  if (!buf || !(buf instanceof Buffer)) {
+    return BigInt(0);
+  }
+  
   if (process.browser || converter === undefined) {
     const reversed = Buffer.from(buf);
     reversed.reverse();
@@ -41,6 +45,11 @@ export function toBigIntLE(buf: Buffer): bigint {
  * @returns A BigInt with the big-endian representation of buf.
  */
 export function toBigIntBE(buf: Buffer): bigint {
+  // Add input validation to prevent buffer overflow
+  if (!buf || !(buf instanceof Buffer)) {
+    return BigInt(0);
+  }
+  
   if (process.browser || converter === undefined) {
     const hex = buf.toString('hex');
     if (hex.length === 0) {
