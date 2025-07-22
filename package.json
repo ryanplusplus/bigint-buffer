@@ -14,7 +14,7 @@
     "lint": "gts check",
     "install": "npm run rebuild || echo \"Couldn't build bindings. Non-native version used.\"",
     "prepare": "npm run compile",
-    "prepublishOnly": "rm -rf build/Release; rm build/Makefile; rm build/gyp-*; rm build/*.mk; rm build/*.Makefile; rm *.tgz",
+    "prepublishOnly": "rm -rf build/Release 2>/dev/null || true; rm build/Makefile 2>/dev/null || true; rm build/gyp-* 2>/dev/null || true; rm build/*.mk 2>/dev/null || true; rm build/*.Makefile 2>/dev/null || true; rm *.tgz 2>/dev/null || true",
     "test:browser": "karma start karma.conf.js",
     "test:node": "mocha -r ts-node/register src/**/*.spec.ts --timeout 40000",
     "benchmark": "node -r ts-node/register src/index.bench.ts",

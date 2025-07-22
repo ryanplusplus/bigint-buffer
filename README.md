@@ -1,5 +1,5 @@
 # 💪🔢 bigint-buffer: Buffer Utilities for TC39 BigInt Proposal (FIXED VERSION)
-[![NPM Package](https://img.shields.io/npm/v/@y3fers0n/bigint-buffer.svg?style=flat-square)](https://www.npmjs.org/package/@y3fers0n/bigint-buffer)
+[![NPM Package](https://img.shields.io/npm/v/@fivezone/bigint-buffer.svg?style=flat-square)](https://www.npmjs.org/package/@fivezone/bigint-buffer)
 
 ## SECURITY NOTICE: Fixed Version
 
