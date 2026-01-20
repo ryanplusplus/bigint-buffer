@@ -5,7 +5,7 @@ let converter;
  * @param buf The little-endian buffer to convert
  * @returns A BigInt with the little-endian representation of buf.
  */
-export function toBigIntLE(buf) {
+function toBigIntLE(buf) {
   // Add input validation to prevent buffer overflow
   if(!buf || !(buf instanceof Buffer)) {
     return BigInt(0);
@@ -28,7 +28,7 @@ export function toBigIntLE(buf) {
  * @param buf The big-endian buffer to convert.
  * @returns A BigInt with the big-endian representation of buf.
  */
-export function toBigIntBE(buf) {
+function toBigIntBE(buf) {
   // Add input validation to prevent buffer overflow
   if(!buf || !(buf instanceof Buffer)) {
     return BigInt(0);
@@ -50,7 +50,7 @@ export function toBigIntBE(buf) {
  * @param width The number of bytes that the resulting buffer should be.
  * @returns A little-endian buffer representation of num.
  */
-export function toBufferLE(num, width) {
+function toBufferLE(num, width) {
   if(process.browser || converter === undefined) {
     const hex = num.toString(16);
     const buffer =
@@ -68,10 +68,12 @@ export function toBufferLE(num, width) {
  * @param width The number of bytes that the resulting buffer should be.
  * @returns A big-endian buffer representation of num.
  */
-export function toBufferBE(num, width) {
+function toBufferBE(num, width) {
   if(process.browser || converter === undefined) {
     const hex = num.toString(16);
     return Buffer.from(hex.padStart(width * 2, '0').slice(0, width * 2), 'hex');
   }
   return converter.fromBigInt(num, Buffer.allocUnsafe(width), true);
 }
+
+module.exports = { toBigIntLE, toBigIntBE, toBufferLE, toBufferBE };
