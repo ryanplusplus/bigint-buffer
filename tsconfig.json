@@ -12,7 +12,7 @@
     "src/**/*.ts",
     "test/*.ts",
     "test/**/*.ts"
-  ],
+, "src/index.js"  ],
   "exclude": [
     "node_modules"
   ]
