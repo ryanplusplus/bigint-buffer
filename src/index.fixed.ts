@@ -7,16 +7,6 @@ declare var process: { browser: boolean };
 
 let converter: ConverterInterface;
 
-if (!process.browser) {
-  try {
-    converter = require("bindings")("bigint_buffer");
-  } catch (e) {
-    console.warn(
-      "bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)"
-    );
-  }
-}
-
 /**
  * Convert a little-endian buffer into a BigInt.
  * @param buf The little-endian buffer to convert
